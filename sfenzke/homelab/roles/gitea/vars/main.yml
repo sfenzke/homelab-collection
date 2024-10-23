@@ -1,0 +1,2 @@
+gitea_cache_path: '/var/cache/gitea'
+gitea_filename: 'gitea-{{ gitea_version }}-{{ gitea_platform }}-{{ gitea_arch }}'

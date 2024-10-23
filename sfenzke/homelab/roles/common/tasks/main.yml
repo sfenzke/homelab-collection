@@ -1,0 +1,3 @@
+- name: 'Include RHEL specific tasks'
+  ansible.builtin.include_tasks: 'rhel.yml'
+  when: "'rhelserver' in group_names"

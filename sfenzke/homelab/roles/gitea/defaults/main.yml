@@ -1,0 +1,4 @@
+gitea_platform: linux
+gitea_arch: amd64
+gitea_user: gitea
+gitea_group: gitea

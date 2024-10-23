@@ -1,0 +1,9 @@
+- name: 'Copy gitea binary to /usr/local/bin'
+  ansible.builtin.copy:
+    remote_src: true
+    force: true
+    src: '{{ gitea_cache_path }}/{{ gitea_filename }}'
+    dest: '/usr/local/bin/gitea'
+    owner: '{{ gitea_user }}'
+    group: '{{ gitea_group }}'
+    mode: '0755'

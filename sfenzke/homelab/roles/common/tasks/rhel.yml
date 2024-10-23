@@ -1,0 +1,5 @@
+- name: "Register the installation"
+  community.general.redhat_subscription:
+    username: "{{ redhat_account.username }}"
+    password: "{{ redhat_account.password }}"
+    state: "present"

@@ -1,0 +1,26 @@
+- name: 'Create gite group'
+  ansible.builtin.group:
+    name: '{{ gitea_group }}'
+    state: 'present'
+
+- name: 'Create gitea gitea gitea user'
+  ansible.builtin.user:
+    name: '{{ gitea_user }}'
+    group: '{{ gitea_group }}'
+
+- name: 'Create cache dir'
+  ansible.builtin.file:
+    dest: '{{ gitea_cache_path }}'
+    owner: '{{ gitea_user }}'
+    group: '{{ gitea_group }}'
+    mode: '0770'
+    state: 'directory'
+
+- name: 'Download gitea binary'
+  ansible.builtin.get_url:
+    url: 'https://dl.gitea.com/gitea/{{ gitea_version }}/{{ gitea_filename }}'
+    dest: '{{ gitea_cache_path }}/{{ gitea_filename }}'
+    owner: '{{ gitea_user }}'
+    group: '{{ gitea_group }}'
+    mode: '0555'
+  notify: 'Copy gitea binary to /usr/local/bin'
