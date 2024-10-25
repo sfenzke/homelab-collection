@@ -13,7 +13,7 @@
         owner: "root"
         group: "root"
         mode: "0600"
-      loop: nginx-sites
+      loop: "{{ nginx_sites }}"
 
     - name: "Enable configurations"
       ansible.builtin.file:
