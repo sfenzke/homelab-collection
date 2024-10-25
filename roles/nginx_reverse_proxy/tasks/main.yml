@@ -9,7 +9,7 @@
     - name: "Configure reverse proxy"
       ansible.builtin.template:
         src: "nginx.conf.j2"
-        dest: "/etc/nginx/sites-available/{{ itemi.domain }}"
+        dest: "/etc/nginx/sites-available/{{ item.domain }}"
         owner: "root"
         group: "root"
         mode: "0600"
