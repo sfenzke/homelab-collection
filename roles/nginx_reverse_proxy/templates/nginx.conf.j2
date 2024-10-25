@@ -1,12 +1,12 @@
 server {
-    listen 80;
-    listen[::]:80;
+    listen  80;
+    listen  [::]:80;
 
     server_name {{ item.domain }};
 
-    {% for location in nginx_locations %}
-        location {{ item.location.path }} {
-            proxy_pass {{ item.location.proxy_address }};
+    {% for location in item.nginx_locations %}
+        location {{ location.path }} {
+            proxy_pass {{ location.proxy_address }};
         }
     {% endfor %}
 }

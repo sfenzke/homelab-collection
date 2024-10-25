@@ -6,22 +6,22 @@
         name: "nginx"
         state: "present"
 
+
+    - name: "Deploy clean nginx config"
+      ansible.builtin.copy:
+        src: "nginx.conf"
+        dest: "/etc/nginx/nginx.conf"
+        owner: "root"
+        group: "root"
+        mode: "0600"
+      notify: "Restart nginx"
+
     - name: "Configure reverse proxy"
       ansible.builtin.template:
         src: "nginx.conf.j2"
-        dest: "/etc/nginx/sites-available/{{ item.domain }}"
+        dest: "/etc/nginx/conf.d/{{ item.domain }}.conf"
         owner: "root"
         group: "root"
         mode: "0600"
       loop: "{{ nginx_sites }}"
-
-    - name: "Enable configurations"
-      ansible.builtin.file:
-        src: "/etc/nginx/sites-available/{{ item.domain }}"
-        dest: "/etc/nginx/sites-enabled/{{ item.domain }}"
-        owner: "root"
-        group: "root"
-        mode: "0600"
-        state: "link"
-      loop: nginx-sites
       notify: "Restart nginx"
