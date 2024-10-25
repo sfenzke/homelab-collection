@@ -3,6 +3,8 @@ Description=Git Server
 
 [Service]
 Type=simple
+User={{ gitea_user }}
+Group={{ gite_group }}
 ExecStart=/usr/local/bin/gitea -C /home/gitea/custom -w /home/gitea/
 
 [Install]

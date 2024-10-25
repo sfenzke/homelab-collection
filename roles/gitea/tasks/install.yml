@@ -29,7 +29,7 @@
     notify: 'Copy gitea binary to /usr/local/bin'
 
   - name: "Deploy gitea.service"
-    ansible.builtin.copy:
+    ansible.builtin.template:
       src: "gitea.service"
       dest: "/etc/systemd/system/gitea.service"
       owner: "root"
