@@ -1,0 +1,9 @@
+[Unit]
+Description=Git Server
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/gitea -C /home/gitea/custom -w /home/gitea/
+
+[Install]
+WantedBy=multi-user.target
